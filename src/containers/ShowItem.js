@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import selectEpisode from '../actions/episodes'
+import { bindActionCreators } from 'redux'
+import EpisodeItem from '../containers/EpisodeItem'
 
 class ShowItem extends Component {
   renderEpisodeList(episodes) {
+    const { selectEpisode } = this.props
+
     return episodes.map(episode => {
-      return(
-        <li key={episode.id}>
+      return (
+        <li key={episode.id} onClick={() => selectEpisode(episode)}>
           Season {episode.season} Episode {episode.number} - {episode.name}
         </li>
       )
@@ -13,7 +18,6 @@ class ShowItem extends Component {
   }
 
   render() {
-    console.log(this.props)
     const { activeShow } = this.props
     if(!activeShow){
       return <div>Select a show</div>
@@ -26,6 +30,8 @@ class ShowItem extends Component {
         <ul>
           {this.renderEpisodeList(activeShow.episodes)}
         </ul>
+
+        <EpisodeItem />
       </div>
     )
   }
@@ -37,14 +43,13 @@ const mapStateToProps = state => {
   }
 }
 
-// const mapDispatchToProps = dispatch => {
-//   return bindActionCreators(
-//     {
-//       selectShow: selectShow
-//     },
-//     dispatch
-//   )
-// }
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators(
+    {
+      selectEpisode: selectEpisode
+    },
+    dispatch
+  )
+}
 
-// export default connect(mapStateToProps, mapDispatchToProps)(ShowList)
-export default connect(mapStateToProps)(ShowItem)
+export default connect(mapStateToProps, mapDispatchToProps)(ShowItem)

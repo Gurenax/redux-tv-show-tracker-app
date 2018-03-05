@@ -16,7 +16,7 @@ import ShowItem from '../containers/ShowItem'
 /*
 * Create a Redux Store for the RootReducer (needed by Provider)
 */
-import RootReducer from '../reducers/index'
+import RootReducer from '../reducers/rootReducer'
 // const store = createStore(RootReducer)
 const store = createStore(RootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 

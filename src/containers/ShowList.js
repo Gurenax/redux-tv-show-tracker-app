@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { selectShow } from '../actions/index'
+import selectShow from '../actions/shows'
 import { bindActionCreators } from 'redux'
 import fetchEpisodeList from '../api/episodes'
 
@@ -11,11 +11,8 @@ class ShowList extends Component {
     return shows.map(showItem => {
       const show = showItem.show
       const episodes = fetchEpisodeList(show.id)
-      const showPayload = {
-        show: show,
-        episodes: episodes
-      }
-      return <li key={show.id} onClick={() => selectShow(showPayload)}>{show.name}</li>
+      
+      return <li key={show.id} onClick={() => selectShow(show, episodes)}>{show.name}</li>
     })
   }
 
