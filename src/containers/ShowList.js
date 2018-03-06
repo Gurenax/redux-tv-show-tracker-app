@@ -4,20 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import selectShow from '../actions/shows'
 import fetchEpisodeList from '../api/episodes'
-
-const formatRating = rating => {
-  return !rating ? 'Not rated' : 'Rating ' + rating
-}
-
-const colorizeRating = rating => {
-  if(rating>=7) {
-    return "showRatingGood"
-  } else if(rating>=5) {
-    return "showRatingAvg"
-  } else {
-    return "showRatingBad"
-  }
-}
+import { formatRating, colorizeRating } from '../helpers/rating'
 
 class ShowList extends Component {
   renderList() {
@@ -36,7 +23,9 @@ class ShowList extends Component {
             <div className="showGenre">{show.genres.join(', ')}</div>
             <div className="showBlock d-flex justify-content-between">
               <div className="showNetwork mr-auto">{show.network.name}</div>
-              <div className={colorizeRating(show.rating.average)+' mr-2'}>{formatRating(show.rating.average)}</div>
+              <div className={colorizeRating(show.rating.average)+' mr-2'}>
+                {formatRating(show.rating.average)}
+              </div>
             </div>
           </div>
         </Link>
