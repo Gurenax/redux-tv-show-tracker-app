@@ -15,13 +15,13 @@ class ShowList extends Component {
       const episodes = fetchEpisodeList(show.id)
       
       return <li key={show.id} onClick={() => selectShow(show, episodes)}>
-        <Link to='/show' className="showListItem d-flex m-2">
+        <Link to='/show' className="showListItem d-flex m-1">
           <div className="showListImage"
                 style={{backgroundImage: "url("+show.image.medium+")"}}></div>
           <div className="ml-2">
             <h4 className="showTitle">{show.name}</h4>
             <div className="showGenre">{show.genres.join(', ')}</div>
-            <div className="showBlock d-flex justify-content-between">
+            <div className="showBlock d-flex justify-content-between pr-2">
               <div className="showNetwork mr-auto">{show.network.name}</div>
               <div className={colorizeRating(show.rating.average)+' mr-2'}>
                 {formatRating(show.rating.average)}
@@ -34,7 +34,7 @@ class ShowList extends Component {
   }
 
   render() {
-    return <ul className="showList">{this.renderList()}</ul>
+    return <ul className="showList d-flex flex-wrap">{this.renderList()}</ul>
   }
 }
 

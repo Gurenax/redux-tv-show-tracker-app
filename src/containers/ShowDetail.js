@@ -12,9 +12,9 @@ class ShowDetail extends Component {
 
     return episodes.map(episode => {
       return (
-        <li key={episode.id} onClick={() => selectEpisode(episode)}>
+        <li key={episode.id} onClick={() => selectEpisode(episode)} className="mb-2 mr-2">
           <Link to='/episode'>
-            <div className="episodeListItem d-flex mb-2">
+            <div className="episodeListItem d-flex">
             <div className="episodeListImage"
                 style={{backgroundImage: "url("+(!!episode.image && episode.image.medium)+")"}}></div>
             <div className="ml-2">
@@ -59,7 +59,7 @@ class ShowDetail extends Component {
         <div className="m-2" dangerouslySetInnerHTML={{__html: activeShow.show.summary}}></div>
         <div className="m-2">
           <h5 className="episodeHeader">Episodes</h5>
-          <ul className="episodeList">
+          <ul className="episodeList d-flex flex-wrap">
             {this.renderEpisodeList(activeShow.episodes)}
           </ul>
         </div>

@@ -10,7 +10,7 @@
   .showListItem {
     min-width: 300px;
     max-width: 300px;
-    text-decoration: none;
+    background: #4F4F4F;
   }
 }
 .showListImage {
@@ -50,6 +50,8 @@
   list-style: none;
 }
 .episodeListItem {
+  min-width: 300px;
+  max-width: 300px;
   background: #4F4F4F;
 }
 .episodeListImage {
