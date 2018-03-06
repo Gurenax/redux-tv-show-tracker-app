@@ -32,13 +32,13 @@
 .showBlock {
   min-width: 200px;
 }
-.showRatingGood {
+.showRatingGood, .episodeAired {
   color: #27AE60;
 }
 .showRatingAvg {
   color: #F2C94C;
 }
-.showRatingBad {
+.showRatingBad, .episodeNotAired {
   color: #EB5757;
 }
 
@@ -47,6 +47,21 @@
 }
 .episodeList {
   list-style: none;
+}
+.episodeListImage {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  min-height: 75px;
+  min-width: 75px;
+  max-height: 75px;
+  max-width: 75px;
+}
+.episodeNo {
+  color: #BDBDBD;
+}
+.episodeHeader {
+  font-size: 16px;
 }
 // .episodeListItem {
 //   text-decoration: none !important;

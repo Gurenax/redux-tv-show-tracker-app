@@ -4,6 +4,16 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import selectEpisode from '../actions/episodes'
 import { formatRating, colorizeRating } from '../helpers/rating'
+import moment from 'moment'
+
+const colorizeAirdate = dateStr => {
+  return moment.utc(dateStr) < moment.utc() ? 'episodeAired' : 'episodeNotAired'
+}
+const formatAirdate = dateStr => {
+  const airDate = moment.utc(dateStr)
+  return airDate < moment.utc() ? 'Aired: '+airDate.format('LL') : 'Scheduled to air: '+airDate.format('LL')
+}
+
 
 class ShowDetail extends Component {
   renderEpisodeList(episodes) {
@@ -12,9 +22,17 @@ class ShowDetail extends Component {
     return episodes.map(episode => {
       return (
         <li key={episode.id} onClick={() => selectEpisode(episode)}>
-          <Link to='/episode' className="episodeListItem">
-            {!!episode.image && <img src={episode.image.medium} alt="" />}
-            Season {episode.season} Episode {episode.number} - {episode.name}
+          <Link to='/episode' className="episodeListItem d-flex">
+            
+            <div className="episodeListImage"
+                style={{backgroundImage: "url("+(!!episode.image && episode.image.medium)+")"}}></div>
+            <div className="ml-2">
+              <div className="episodeNo">Season {episode.season} Episode {episode.number}</div>
+              <h5 className="episodeHeader">{episode.name}</h5>
+              <div className={colorizeAirdate(episode.airdate)}>
+                {formatAirdate(episode.airdate)}
+              </div>
+            </div>
           </Link>
         </li>
       )
