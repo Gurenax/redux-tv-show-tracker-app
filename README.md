@@ -9,8 +9,9 @@ Most TV Show Tracker Apps are subscription-based which cost money. I want to bui
 ## Tech Stack
 
 * React
-* Redux
 * React Router
+* Redux
+* Redux Thunk
 * Bootstrap 4
 * SCSS
 
