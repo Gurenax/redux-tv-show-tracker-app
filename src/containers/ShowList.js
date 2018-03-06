@@ -12,7 +12,17 @@ class ShowList extends Component {
       const show = showItem.show
       const episodes = fetchEpisodeList(show.id)
       
-      return <li key={show.id} onClick={() => selectShow(show, episodes)}>{show.name}</li>
+      return <li key={show.id} onClick={() => selectShow(show, episodes)}>
+        <div>
+          <img src={show.image.medium} />
+          <h3>{show.name}</h3>
+          <div>{show.genres.join(', ')}</div>
+          <div>
+            <div>{show.network.name}</div>
+            <div>{show.rating.average}</div>
+          </div>
+        </div>
+      </li>
     })
   }
 

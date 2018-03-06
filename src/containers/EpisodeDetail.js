@@ -9,6 +9,7 @@ class EpisodeDetail extends Component {
     }
     return (
       <div>
+        {!!episode.image && <img src={episode.image.medium} />}
         <div>Title {episode.name}</div>
         <div>Season {episode.season}</div>
         <div>Episode {episode.number}</div>

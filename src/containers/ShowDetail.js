@@ -11,6 +11,7 @@ class ShowDetail extends Component {
     return episodes.map(episode => {
       return (
         <li key={episode.id} onClick={() => selectEpisode(episode)}>
+          {!!episode.image && <img src={episode.image.medium} />}
           Season {episode.season} Episode {episode.number} - {episode.name}
         </li>
       )
@@ -25,7 +26,15 @@ class ShowDetail extends Component {
 
     return (
       <div>
-        {activeShow.show.name}
+        <h2>Show Detail</h2>
+        <img src={activeShow.show.image.medium} />
+        <h3>{activeShow.show.name}</h3>
+        <div>{activeShow.show.genres.join(', ')}</div>
+        <div>
+            <div>{activeShow.show.network.name}</div>
+            <div>{activeShow.show.rating.average}</div>
+        </div>
+        <div dangerouslySetInnerHTML={{__html: activeShow.show.summary}}></div>
         <p>Episodes:</p>
         <ul>
           {this.renderEpisodeList(activeShow.episodes)}
