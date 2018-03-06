@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import selectEpisode from '../actions/episodes'
+import { formatRating, colorizeRating } from '../helpers/rating'
 
 class ShowDetail extends Component {
   renderEpisodeList(episodes) {
@@ -33,18 +34,25 @@ class ShowDetail extends Component {
             Back to List
           </Link>
         </div>
-        <img src={activeShow.show.image.medium} alt="" />
-        <h3>{activeShow.show.name}</h3>
-        <div>{activeShow.show.genres.join(', ')}</div>
-        <div>
-            <div>{activeShow.show.network.name}</div>
-            <div>{activeShow.show.rating.average}</div>
+        <div className="d-flex m-2">
+          <img src={activeShow.show.image.medium} alt="" width="100"/>
+          <div className="ml-2">
+            <h3>{activeShow.show.name}</h3>
+            <div className="showGenre">{activeShow.show.genres.join(', ')}</div>
+            
+            <div className="showNetwork">{activeShow.show.network.name}</div>
+            <div className={colorizeRating(activeShow.show.rating.average)}>
+              {formatRating(activeShow.show.rating.average)}
+            </div>
+          </div>
         </div>
-        <div dangerouslySetInnerHTML={{__html: activeShow.show.summary}}></div>
-        <p>Episodes:</p>
-        <ul>
-          {this.renderEpisodeList(activeShow.episodes)}
-        </ul>
+        <div className="m-2" dangerouslySetInnerHTML={{__html: activeShow.show.summary}}></div>
+        <div className="m-2">
+          <h5 className="episodeHeader">Episodes</h5>
+          <ul className="episodeList">
+            {this.renderEpisodeList(activeShow.episodes)}
+          </ul>
+        </div>
       </div>
     )
   }

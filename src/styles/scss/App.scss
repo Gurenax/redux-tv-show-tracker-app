@@ -4,7 +4,6 @@
 }
 
 .showList {
-  padding: 0;
   list-style: none;
   
   .showListItem {
@@ -23,7 +22,6 @@
   max-width: 100px;
 }
 .showTitle {
-  margin: 0;
   font-size: 20px;
 }
 .showGenre {
@@ -33,18 +31,23 @@
 }
 .showBlock {
   min-width: 200px;
-  
-  .showRatingGood {
-    color: #27AE60;
-  }
-  .showRatingAvg {
-    color: #F2C94C;
-  }
-  .showRatingBad {
-    color: #EB5757;
-  }
+}
+.showRatingGood {
+  color: #27AE60;
+}
+.showRatingAvg {
+  color: #F2C94C;
+}
+.showRatingBad {
+  color: #EB5757;
 }
 
+.episodeHeader {
+  font-size: 20px;
+}
+.episodeList {
+  list-style: none;
+}
 // .episodeListItem {
 //   text-decoration: none !important;
 // }
