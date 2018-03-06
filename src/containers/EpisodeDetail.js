@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 
 class EpisodeDetail extends Component {
   render() {
-    const { episode } = this.props
+    const { episode } = this.props.activeEpisode
+    
     if(!episode) {
       return <Redirect to="/" />
     }
@@ -15,7 +16,7 @@ class EpisodeDetail extends Component {
             Back to Show
           </Link>
         </div>
-        {!!episode.image && <img src={episode.image.medium} alt="" />}
+        {!!episode.image && <img src={episode.image.original} alt="" width="300" />}
         <div>Title {episode.name}</div>
         <div>Season {episode.season}</div>
         <div>Episode {episode.number}</div>
@@ -28,7 +29,7 @@ class EpisodeDetail extends Component {
 
 const mapStateToProps = state => {
   return {
-    episode: state.activeEpisode
+    activeEpisode: state.activeEpisode
   }
 }
 
