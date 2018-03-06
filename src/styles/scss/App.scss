@@ -1,0 +1,50 @@
+.App {
+  text-align: left;
+  font-size: 12px;
+}
+
+.showList {
+  padding: 0;
+  list-style: none;
+  
+  .showListItem {
+    min-width: 300px;
+    max-width: 300px;
+    text-decoration: none;
+  }
+}
+.showListImage {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  min-height: 100px;
+  min-width: 100px;
+  max-height: 100px;
+  max-width: 100px;
+}
+.showTitle {
+  margin: 0;
+  font-size: 20px;
+}
+.showGenre {
+  font-size: 12px;
+  font-style: italic;
+  color: #828282;
+}
+.showBlock {
+  min-width: 200px;
+  
+  .showRatingGood {
+    color: #27AE60;
+  }
+  .showRatingAvg {
+    color: #F2C94C;
+  }
+  .showRatingBad {
+    color: #EB5757;
+  }
+}
+
+// .episodeListItem {
+//   text-decoration: none !important;
+// }
