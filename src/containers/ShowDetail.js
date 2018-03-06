@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import selectEpisode from '../actions/episodes'
 import { bindActionCreators } from 'redux'
-import EpisodeItem from '../containers/EpisodeItem'
+import EpisodeDetail from '../containers/EpisodeDetail'
 
-class ShowItem extends Component {
+class ShowDetail extends Component {
   renderEpisodeList(episodes) {
     const { selectEpisode } = this.props
 
@@ -31,7 +31,7 @@ class ShowItem extends Component {
           {this.renderEpisodeList(activeShow.episodes)}
         </ul>
 
-        <EpisodeItem />
+        <EpisodeDetail />
       </div>
     )
   }
@@ -52,4 +52,4 @@ const mapDispatchToProps = dispatch => {
   )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ShowItem)
+export default connect(mapStateToProps, mapDispatchToProps)(ShowDetail)

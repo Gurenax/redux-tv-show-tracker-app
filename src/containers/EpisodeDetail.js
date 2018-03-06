@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-class EpisodeItem extends Component {
+class EpisodeDetail extends Component {
   render() {
     const { episode } = this.props
     if(!episode) {
@@ -25,4 +25,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(EpisodeItem)
+export default connect(mapStateToProps)(EpisodeDetail)

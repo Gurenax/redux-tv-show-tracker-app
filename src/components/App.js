@@ -11,7 +11,7 @@ import '../styles/App.css'
 * Containers/Components
 */
 import ShowList from '../containers/ShowList'
-import ShowItem from '../containers/ShowItem'
+import ShowDetail from '../containers/ShowDetail'
 
 /*
 * Create a Redux Store for the RootReducer (needed by Provider)
@@ -25,9 +25,9 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div className="App">
-          <h1>App</h1>
+          <h1>TV Show Tracker App</h1>
           <ShowList />
-          <ShowItem />
+          <ShowDetail />
         </div>
       </Provider>
     )
