@@ -4,16 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import selectEpisode from '../actions/episodes'
 import { formatRating, colorizeRating } from '../helpers/rating'
-import moment from 'moment'
-
-const colorizeAirdate = dateStr => {
-  return moment.utc(dateStr) < moment.utc() ? 'episodeAired' : 'episodeNotAired'
-}
-const formatAirdate = dateStr => {
-  const airDate = moment.utc(dateStr)
-  return airDate < moment.utc() ? 'Aired: '+airDate.format('LL') : 'Scheduled to air: '+airDate.format('LL')
-}
-
+import { colorizeAirdate, formatAirdate } from '../helpers/airdate'
 
 class ShowDetail extends Component {
   renderEpisodeList(episodes) {
@@ -22,8 +13,8 @@ class ShowDetail extends Component {
     return episodes.map(episode => {
       return (
         <li key={episode.id} onClick={() => selectEpisode(episode)}>
-          <Link to='/episode' className="episodeListItem d-flex">
-            
+          <Link to='/episode'>
+            <div className="episodeListItem d-flex mb-2">
             <div className="episodeListImage"
                 style={{backgroundImage: "url("+(!!episode.image && episode.image.medium)+")"}}></div>
             <div className="ml-2">
@@ -32,6 +23,7 @@ class ShowDetail extends Component {
               <div className={colorizeAirdate(episode.airdate)}>
                 {formatAirdate(episode.airdate)}
               </div>
+            </div>
             </div>
           </Link>
         </li>

@@ -1,6 +1,7 @@
 .App {
   text-align: left;
   font-size: 12px;
+  background: #333333;
 }
 
 .showList {
@@ -48,10 +49,14 @@
 .episodeList {
   list-style: none;
 }
+.episodeListItem {
+  background: #4F4F4F;
+}
 .episodeListImage {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;
+  background-color: #828282;
   min-height: 75px;
   min-width: 75px;
   max-height: 75px;
@@ -63,6 +68,3 @@
 .episodeHeader {
   font-size: 16px;
 }
-// .episodeListItem {
-//   text-decoration: none !important;
-// }
