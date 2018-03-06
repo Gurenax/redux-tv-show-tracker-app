@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
+import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import selectEpisode from '../actions/episodes'
 import { bindActionCreators } from 'redux'
-import EpisodeDetail from '../containers/EpisodeDetail'
+import selectEpisode from '../actions/episodes'
 
 class ShowDetail extends Component {
   renderEpisodeList(episodes) {
@@ -11,8 +11,10 @@ class ShowDetail extends Component {
     return episodes.map(episode => {
       return (
         <li key={episode.id} onClick={() => selectEpisode(episode)}>
-          {!!episode.image && <img src={episode.image.medium} />}
-          Season {episode.season} Episode {episode.number} - {episode.name}
+          <Link to='/episode' className="episodeListItem">
+            {!!episode.image && <img src={episode.image.medium} alt="" />}
+            Season {episode.season} Episode {episode.number} - {episode.name}
+          </Link>
         </li>
       )
     })
@@ -21,13 +23,17 @@ class ShowDetail extends Component {
   render() {
     const { activeShow } = this.props
     if(!activeShow){
-      return <div>Select a show</div>
+      return <Redirect to="/" />
     }
 
     return (
       <div>
-        <h2>Show Detail</h2>
-        <img src={activeShow.show.image.medium} />
+        <div>
+          <Link to="/">
+            Back to List
+          </Link>
+        </div>
+        <img src={activeShow.show.image.medium} alt="" />
         <h3>{activeShow.show.name}</h3>
         <div>{activeShow.show.genres.join(', ')}</div>
         <div>
@@ -39,8 +45,6 @@ class ShowDetail extends Component {
         <ul>
           {this.renderEpisodeList(activeShow.episodes)}
         </ul>
-
-        <EpisodeDetail />
       </div>
     )
   }

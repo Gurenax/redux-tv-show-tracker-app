@@ -1,8 +1,23 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import selectShow from '../actions/shows'
 import { bindActionCreators } from 'redux'
+import selectShow from '../actions/shows'
 import fetchEpisodeList from '../api/episodes'
+
+const formatRating = rating => {
+  return !rating ? 'Not rated' : 'Rating ' + rating
+}
+
+const colorizeRating = rating => {
+  if(rating>=7) {
+    return "showRatingGood"
+  } else if(rating>=5) {
+    return "showRatingAvg"
+  } else {
+    return "showRatingBad"
+  }
+}
 
 class ShowList extends Component {
   renderList() {
@@ -13,21 +28,24 @@ class ShowList extends Component {
       const episodes = fetchEpisodeList(show.id)
       
       return <li key={show.id} onClick={() => selectShow(show, episodes)}>
-        <div>
-          <img src={show.image.medium} />
-          <h3>{show.name}</h3>
-          <div>{show.genres.join(', ')}</div>
-          <div>
-            <div>{show.network.name}</div>
-            <div>{show.rating.average}</div>
+        <Link to='/show' className="showListItem d-flex m-2">
+          <div className="showListImage"
+                style={{backgroundImage: "url("+show.image.medium+")"}}></div>
+          <div className="ml-2">
+            <h4 className="showTitle">{show.name}</h4>
+            <div className="showGenre">{show.genres.join(', ')}</div>
+            <div className="showBlock d-flex justify-content-between">
+              <div className="showNetwork mr-auto">{show.network.name}</div>
+              <div className={colorizeRating(show.rating.average)+' mr-2'}>{formatRating(show.rating.average)}</div>
+            </div>
           </div>
-        </div>
+        </Link>
       </li>
     })
   }
 
   render() {
-    return <ul>{this.renderList()}</ul>
+    return <ul className="showList">{this.renderList()}</ul>
   }
 }
 
