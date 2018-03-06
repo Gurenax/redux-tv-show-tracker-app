@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import {
   BrowserRouter as Router,
   Route,
   Switch
 } from 'react-router-dom'
+import thunk from 'redux-thunk'
 
 /*
 * Style
@@ -25,7 +26,13 @@ import EpisodeDetail from '../containers/EpisodeDetail'
 */
 import RootReducer from '../reducers/rootReducer'
 // const store = createStore(RootReducer)
-const store = createStore(RootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+const store = createStore(
+  RootReducer,
+  compose(
+    applyMiddleware(thunk),
+    window.devToolsExtension ? window.devToolsExtension() : f => f
+  )
+)
 
 class App extends Component {
   render() {

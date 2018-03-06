@@ -2,19 +2,23 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import selectShow from '../actions/shows'
-import fetchEpisodeList from '../api/episodes'
+import { loadShowList } from '../actions/ShowList'
+import { selectShow } from '../actions/ShowDetail'
 import { formatRating, colorizeRating } from '../helpers/rating'
 
 class ShowList extends Component {
   renderList() {
-    const { shows, selectShow } = this.props
+    const { showList, selectShow } = this.props
 
-    return shows.map(showItem => {
+    if(!showList.shows) {
+      return <div>Loading...</div>
+    }
+
+    return showList.shows.map(showItem => {
       const show = showItem.show
-      const episodes = fetchEpisodeList(show.id)
+      // const episodes = loadEpisodeList(show)
       
-      return <li key={show.id} onClick={() => selectShow(show, episodes)}>
+      return <li key={show.id} onClick={() => selectShow(show)}>
         <Link to='/show' className="showListItem d-flex m-1">
           <div className="showListImage"
                 style={{backgroundImage: "url("+show.image.medium+")"}}></div>
@@ -33,6 +37,12 @@ class ShowList extends Component {
     })
   }
 
+  componentDidMount() {
+    if(!this.props.showList.shows) {
+      this.props.loadShowList()
+    }
+  }
+
   render() {
     return <ul className="showList d-flex flex-wrap">{this.renderList()}</ul>
   }
@@ -40,14 +50,16 @@ class ShowList extends Component {
 
 const mapStateToProps = state => {
   return {
-    shows: state.shows
+    showList: state.showList
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
+      loadShowList: loadShowList,
       selectShow: selectShow
+      // loadEpisodeList: loadEpisodeList
     },
     dispatch
   )

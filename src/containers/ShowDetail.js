@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import selectEpisode from '../actions/episodes'
+import { selectEpisode } from '../actions/EpisodeDetail'
+import { loadEpisodeList } from '../actions/ShowDetail'
 import { formatRating, colorizeRating } from '../helpers/rating'
 import { colorizeAirdate, formatAirdate } from '../helpers/airdate'
 
@@ -31,9 +32,15 @@ class ShowDetail extends Component {
     })
   }
 
+  componentDidMount() {
+    if(!this.props.activeShow.episodes) {
+      this.props.loadEpisodeList(this.props.activeShow.show)
+    }
+  }
+
   render() {
     const { activeShow } = this.props
-    if(!activeShow){
+    if(!activeShow || !activeShow.show){
       return <Redirect to="/" />
     }
 
@@ -60,7 +67,7 @@ class ShowDetail extends Component {
         <div className="m-2">
           <h5 className="episodeHeader">Episodes</h5>
           <ul className="episodeList d-flex flex-wrap">
-            {this.renderEpisodeList(activeShow.episodes)}
+            {!!activeShow.episodes && this.renderEpisodeList(activeShow.episodes)}
           </ul>
         </div>
       </div>
@@ -77,7 +84,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
-      selectEpisode: selectEpisode
+      selectEpisode: selectEpisode,
+      loadEpisodeList: loadEpisodeList
     },
     dispatch
   )

@@ -1,7 +1,10 @@
 import { EPISODE_SELECTED } from '../constants/actionTypes'
 
-const ActiveEpisode = (state = null, action) => {
-  console.log('ActiveEpisode called')
+const initialState = {
+  episode: null
+}
+
+export default (state = initialState, action) => {
   switch (action.type) {
     case EPISODE_SELECTED:
       return action.payload
@@ -10,4 +13,3 @@ const ActiveEpisode = (state = null, action) => {
   }
 }
 
-export default ActiveEpisode

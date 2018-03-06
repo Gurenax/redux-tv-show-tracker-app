@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
-import ShowReducer from './showReducer'
-import ActiveShow from './activeShow'
-import ActiveEpisode from './activeEpisode'
+import ShowListReducer from './ShowList'
+import ActiveShow from './ShowDetail'
+import ActiveEpisode from './EpisodeDetail'
 
 const RootReducer = combineReducers({
-  shows: ShowReducer,
+  showList: ShowListReducer,
   activeShow: ActiveShow,
   activeEpisode: ActiveEpisode
 })
