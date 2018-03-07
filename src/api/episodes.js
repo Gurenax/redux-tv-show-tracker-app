@@ -1,13 +1,13 @@
 const fetchEpisodeList = showId => {
   return new Promise( (resolve, reject) => {
-    if(!!mockData) {
+    if(!!mockData && mockDataId === showId) {
       resolve(mockData)
     } else {
-      reject('Error')
+      reject('No episode list data for show')
     }
   })
 }
-
+const mockDataId = 4
 const mockData = [
   {
     id: 113,

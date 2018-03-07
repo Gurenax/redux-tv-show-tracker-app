@@ -3,7 +3,7 @@ const fetchShowList = () => {
     if(!!mockData) {
       resolve(mockData)
     } else {
-      reject('Error')
+      reject('No show list data')
     }
   })
 }
