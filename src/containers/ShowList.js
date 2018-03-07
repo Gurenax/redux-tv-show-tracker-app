@@ -5,19 +5,22 @@ import { loadShowList, searchShow, changeSearchKeyword } from '../actions/ShowLi
 import { selectShow } from '../actions/ShowDetail'
 import ShowListItem from '../components/ShowList/ShowListItem'
 import SearchBar from '../components/ShowList/SearchBar'
+import SearchCaption from '../components/ShowList/SearchCaption'
 
 class ShowList extends Component {
   renderList() {
     const { showList, selectShow } = this.props
 
-    if(!showList.shows) {
+    if (!showList.shows) {
       return <div>Loading...</div>
     }
 
-    if(!showList.searchKeyword && showList.shows.length===0) {
-      return <div>Type a show to begin</div>
-    } else if(showList.shows.length===0) {
-      return <div>No shows available for the specified keyword</div>
+    if (!showList.searchKeyword && showList.shows.length===0) {
+      return <SearchCaption message="Type a show to begin" />
+    } else if (!!showList.searchKeyword && !!showList.typing && showList.shows.length===0) {
+      return <SearchCaption message="You are typing..." />
+    } else if (showList.shows.length===0){
+      return <SearchCaption message={'No results for the show '+showList.searchKeyword} />
     }
 
     return showList.shows.map(showItem => {
