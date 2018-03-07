@@ -4,10 +4,10 @@ import fetchShowList from '../api/shows'
 /*
 *   Success: fetch show list downloaded
 */
-const loadShowListSuccess = (showList, searchKeyword) => {
+const loadShowListSuccess = (showList, searchKeyword, typing) => {
   return {
     type: SHOWS_LOADED,
-    payload: { shows: showList, searchKeyword: searchKeyword }
+    payload: { shows: showList, searchKeyword: searchKeyword, typing: typing }
   }
 }
 
@@ -15,15 +15,8 @@ const loadShowListSuccess = (showList, searchKeyword) => {
 *   Processing: fetch show list
 */
 export const loadShowList = () => {
-  // console.log('loadShowList')
   return dispatch => {
-    dispatch(loadShowListSuccess([], ''))
-    // return fetchShowList().then(response => {
-    //   // dispatch(loadShowListSuccess(response.data))
-    //   dispatch(loadShowListSuccess([], ''))
-    // }).catch(error => {
-    //   dispatch(loadShowListSuccess([], ''))
-    // })
+    dispatch(loadShowListSuccess([], '', false))
   }
 }
 
@@ -31,12 +24,11 @@ export const loadShowList = () => {
 *   Processing: fetch show list by search keyword
 */
 export const searchShow = keyword => {
-  // console.log('searchShow', keyword)
   return dispatch => {
     return fetchShowList(keyword).then(response => {
-      dispatch(loadShowListSuccess(response.data, keyword))
+      dispatch(loadShowListSuccess(response.data, keyword, false))
     }).catch(error => {
-      dispatch(loadShowListSuccess([], keyword))
+      dispatch(loadShowListSuccess([], keyword, false))
     })
   }
 }
@@ -45,5 +37,5 @@ export const searchShow = keyword => {
 *   Change search keyword value
 */
 export const changeSearchKeyword = (showList, keyword) => {
-  return loadShowListSuccess(showList, keyword)
+  return loadShowListSuccess(showList, keyword, true)
 }
