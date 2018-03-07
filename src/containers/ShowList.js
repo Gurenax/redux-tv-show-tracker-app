@@ -14,8 +14,10 @@ class ShowList extends Component {
       return <div>Loading...</div>
     }
 
-    if(showList.shows.length===0) {
-      return <div>No shows available at this time</div>
+    if(!showList.searchKeyword && showList.shows.length===0) {
+      return <div>Type a show to begin</div>
+    } else if(showList.shows.length===0) {
+      return <div>No shows available for the specified keyword</div>
     }
 
     return showList.shows.map(showItem => {

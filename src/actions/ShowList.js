@@ -15,13 +15,15 @@ const loadShowListSuccess = (showList, searchKeyword) => {
 *   Processing: fetch show list
 */
 export const loadShowList = () => {
+  // console.log('loadShowList')
   return dispatch => {
-    return fetchShowList().then(response => {
-      // dispatch(loadShowListSuccess(response))
-      dispatch(loadShowListSuccess([], ''))
-    }).catch(error => {
-      dispatch(loadShowListSuccess([], ''))
-    })
+    dispatch(loadShowListSuccess([], ''))
+    // return fetchShowList().then(response => {
+    //   // dispatch(loadShowListSuccess(response.data))
+    //   dispatch(loadShowListSuccess([], ''))
+    // }).catch(error => {
+    //   dispatch(loadShowListSuccess([], ''))
+    // })
   }
 }
 
@@ -29,9 +31,10 @@ export const loadShowList = () => {
 *   Processing: fetch show list by search keyword
 */
 export const searchShow = keyword => {
+  // console.log('searchShow', keyword)
   return dispatch => {
-    return fetchShowList().then(response => {
-      dispatch(loadShowListSuccess(response, keyword))
+    return fetchShowList(keyword).then(response => {
+      dispatch(loadShowListSuccess(response.data, keyword))
     }).catch(error => {
       dispatch(loadShowListSuccess([], keyword))
     })

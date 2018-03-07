@@ -11,21 +11,25 @@ const ShowDetailActive = ({
       <div className="ml-2">
         <h3>{activeShow.show.name}</h3>
         <div className="showGenre">{activeShow.show.genres.join(', ')}</div>
-        
-        <div className="showNetwork">{activeShow.show.network.name}</div>
-        <div className={colorizeRating(activeShow.show.rating.average)}>
-          {formatRating(activeShow.show.rating.average)}
-        </div>
+        {!!activeShow.show.network &&
+          <div>
+            <div className="showNetwork">{activeShow.show.network.name}</div>
+            <div className={colorizeRating(activeShow.show.rating.average)}>
+              {formatRating(activeShow.show.rating.average)}
+            </div>
+          </div>
+        }
       </div>
     </div>
     <div className="m-2" dangerouslySetInnerHTML={{__html: activeShow.show.summary}}></div>
-    {episodeList.length>0 &&
+    {episodeList.length>0 ?
       <div className="m-2">
         <h5 className="episodeHeader">Episodes</h5>
         <ul className="episodeList d-flex flex-wrap">
           {episodeList}
         </ul>
       </div>
+      : <div className="m-2">Loading episodes...</div>
     }
   </div>
 )
