@@ -11,10 +11,10 @@ const ShowListItem = ({
       <div className="showListItem d-flex m-1">
         <div className="showListImage"
             style={{backgroundImage: "url("+(!!show.image && show.image.medium)+")"}}></div>
-        <div className="">
+        <div className="showInfo d-flex flex-column">
           <h4 className="showTitle mx-2">{show.name}</h4>
           <div className="showGenre mx-2">{show.genres.join(', ')}</div>
-          <div className="showBlock d-flex justify-content-between mx-2">
+          <div className="showBlock d-flex justify-content-between mx-2 mb-1 mt-auto">
             <div className="showNetwork mr-auto">{!!show.network && show.network.name}</div>
             <div className={colorizeRating(show.rating.average)+' mr-2'}>
               {formatRating(show.rating.average)}

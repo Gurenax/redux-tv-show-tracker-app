@@ -11,10 +11,10 @@ const EpisodeListitem = ({
       <div className="episodeListItem d-flex">
         <div className="episodeListImage"
             style={{backgroundImage: "url("+(!!episode.image && episode.image.medium)+")"}}></div>
-        <div className="ml-2">
+        <div className="ml-2 d-flex flex-column">
           <div className="episodeNo">Season {episode.season} Episode {episode.number}</div>
           <h5 className="episodeName">{episode.name}</h5>
-          <div className={colorizeAirdate(episode.airdate)}>
+          <div className={colorizeAirdate(episode.airdate)+' mt-auto mb-1'}>
             {formatAirdate(episode.airdate)}
           </div>
         </div>

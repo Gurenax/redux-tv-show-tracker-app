@@ -13,7 +13,7 @@ const EpisodeDetailActive = ({
       </div>
       {!!episode.image && <img src={episode.image.original} alt="" width="300" />}
     </div>
-    <div className="m-2" dangerouslySetInnerHTML={{__html: episode.summary}}></div>
+    <div className="episodeSummary m-2" dangerouslySetInnerHTML={{__html: episode.summary}}></div>
   </div>
 )
 

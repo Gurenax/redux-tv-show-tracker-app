@@ -47,7 +47,7 @@ class App extends Component {
                   exact
                   render={() => (
                     <div>
-                      <h1>TV Show Tracker App</h1>
+                      {/* <h1>TV Show Tracker App</h1> */}
                       <ShowList />
                     </div>
                   )}

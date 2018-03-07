@@ -21,7 +21,7 @@ const ShowDetailActive = ({
         }
       </div>
     </div>
-    <div className="m-2" dangerouslySetInnerHTML={{__html: activeShow.show.summary}}></div>
+    <div className="showSummary m-2" dangerouslySetInnerHTML={{__html: activeShow.show.summary}}></div>
     {episodeList.length>0 ?
       <div className="m-2">
         <h5 className="episodeHeader">Episodes</h5>
