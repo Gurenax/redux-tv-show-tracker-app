@@ -31,9 +31,7 @@ class ShowList extends Component {
   }
 
   onSubmitSearch(keyword) {
-    if(!!keyword) {
-      this.props.searchShow(keyword)
-    }
+    this.props.searchShow(keyword)
   }
 
   onChangeKeyword(event) {
@@ -55,7 +53,7 @@ class ShowList extends Component {
         <SearchBar keyword={this.props.showList.searchKeyword}
                   onChangeKeyword={this.onChangeKeyword.bind(this)}
                   onSubmitSearch={this.onSubmitSearch.bind(this)}/>
-        <ul className="showList d-flex flex-wrap">{this.renderList()}</ul>
+        <ul className="showList d-flex flex-wrap m-2 m-lg-4">{this.renderList()}</ul>
       </div>
     )
   }
