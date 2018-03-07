@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { loadShowList, searchShow, changeSearchKeyword } from '../actions/ShowList'
@@ -8,6 +9,14 @@ import SearchBar from '../components/ShowList/SearchBar'
 import SearchCaption from '../components/ShowList/SearchCaption'
 
 class ShowList extends Component {
+  static propTypes = {
+    showList: PropTypes.object.isRequired,
+    loadShowList: PropTypes.func.isRequired,
+    searchShow: PropTypes.func.isRequired,
+    changeSearchKeyword: PropTypes.func.isRequired,
+    selectShow: PropTypes.func.isRequired
+  }
+
   renderList() {
     const { showList, selectShow } = this.props
 

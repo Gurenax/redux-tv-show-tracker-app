@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -8,6 +9,12 @@ import EpisodeListItem from '../components/ShowDetail/EpisodeListItem'
 import ShowDetailActive from '../components/ShowDetail/ShowDetailActive'
 
 class ShowDetail extends Component {
+  static propTypes = {
+    activeShow: PropTypes.object.isRequired,
+    selectEpisode: PropTypes.func.isRequired,
+    loadEpisodeList: PropTypes.func.isRequired
+  }
+
   renderEpisodeList(episodes) {
     const { selectEpisode } = this.props
     return episodes.map(episode => (

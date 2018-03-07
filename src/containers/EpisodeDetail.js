@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import EpisodeDetailActive from '../components/EpisodeDetail/EpisodeDetailActive'
 
 class EpisodeDetail extends Component {
+  static propTypes = {
+    activeEpisode: PropTypes.object.isRequired
+  }
+
   render() {
     const { episode } = this.props.activeEpisode
     
