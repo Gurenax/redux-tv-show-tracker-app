@@ -1,0 +1,38 @@
+.showList {
+  list-style: none;
+  
+  .showListItem {
+    min-width: 300px;
+    max-width: 300px;
+    background: #4F4F4F;
+  }
+}
+.showListImage {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  min-height: 100px;
+  min-width: 100px;
+  max-height: 100px;
+  max-width: 100px;
+}
+.showTitle {
+  font-size: 20px;
+}
+.showGenre {
+  font-size: 12px;
+  font-style: italic;
+  color: #828282;
+}
+.showBlock {
+  min-width: 200px;
+}
+.showRatingGood, .episodeAired {
+  color: #27AE60;
+}
+.showRatingAvg {
+  color: #F2C94C;
+}
+.showRatingBad, .episodeNotAired {
+  color: #EB5757;
+}

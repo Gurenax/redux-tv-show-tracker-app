@@ -1,0 +1,27 @@
+.episodeHeader {
+  font-size: 20px;
+}
+.episodeList {
+  list-style: none;
+}
+.episodeListItem {
+  min-width: 300px;
+  max-width: 300px;
+  background: #4F4F4F;
+}
+.episodeListImage {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  background-color: #828282;
+  min-height: 75px;
+  min-width: 75px;
+  max-height: 75px;
+  max-width: 75px;
+}
+.episodeNo {
+  color: #BDBDBD;
+}
+.episodeHeader {
+  font-size: 16px;
+}
