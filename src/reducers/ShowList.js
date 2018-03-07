@@ -1,7 +1,8 @@
 import { SHOWS_LOADED } from '../constants/actionTypes'
 
 const initialState = {
-  shows: null
+  shows: null,
+  searchKeyword: ''
 }
 
 export default (state = initialState, action) => {

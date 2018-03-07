@@ -4,5 +4,10 @@
   background: #333333;
 }
 
+.headerBar {
+  height: 50px;
+  background: #4F4F4F;
+}
+
 @import 'partials/shows';
 @import 'partials/episodes';
