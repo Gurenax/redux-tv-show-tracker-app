@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { formatRating, colorizeRating } from '../../helpers/rating'
 
@@ -25,5 +26,10 @@ const ShowListItem = ({
     </Link>
   </li>
 )
+
+ShowListItem.propTypes = {
+  show: PropTypes.object.isRequired,
+  selectShow: PropTypes.func.isRequired
+}
 
 export default ShowListItem

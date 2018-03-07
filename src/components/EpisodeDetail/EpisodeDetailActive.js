@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { colorizeAirdate, formatAirdate } from '../../helpers/airdate'
 
 const EpisodeDetailActive = ({
@@ -16,5 +17,9 @@ const EpisodeDetailActive = ({
     <div className="episodeSummary m-2" dangerouslySetInnerHTML={{__html: episode.summary}}></div>
   </div>
 )
+
+EpisodeDetailActive.propTypes = {
+  episode: PropTypes.object.isRequired
+}
 
 export default EpisodeDetailActive

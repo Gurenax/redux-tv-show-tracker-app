@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const SearchBar = ({
   keyword,
@@ -14,5 +15,11 @@ const SearchBar = ({
     </form>
   </div>
 )
+
+SearchBar.propTypes = {
+  keyword: PropTypes.string.isRequired,
+  onChangeKeyword: PropTypes.func.isRequired,
+  onSubmitSearch: PropTypes.func.isRequired,
+}
 
 export default SearchBar

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { formatRating, colorizeRating } from '../../helpers/rating'
 
 const ShowDetailActive = ({
@@ -33,5 +34,10 @@ const ShowDetailActive = ({
     }
   </div>
 )
+
+ShowDetailActive.propTypes = { 
+  activeShow: PropTypes.object.isRequired,
+  episodeList: PropTypes.array.isRequired
+}
 
 export default ShowDetailActive

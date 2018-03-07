@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { colorizeAirdate, formatAirdate } from '../../helpers/airdate'
 
@@ -22,5 +23,10 @@ const EpisodeListitem = ({
     </Link>
   </li>
 )
+
+EpisodeListitem.propTypes = {
+  episode: PropTypes.object.isRequired,
+  selectEpisode: PropTypes.func.isRequired
+}
 
 export default EpisodeListitem
