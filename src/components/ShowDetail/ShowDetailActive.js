@@ -25,7 +25,7 @@ const ShowDetailActive = ({
     {episodeList.length>0 ?
       <div className="m-2">
         <h5 className="episodeHeader">Episodes</h5>
-        <ul className="episodeList d-flex flex-wrap">
+        <ul className="episodeList d-flex flex-wrap m-lg-3">
           {episodeList}
         </ul>
       </div>
