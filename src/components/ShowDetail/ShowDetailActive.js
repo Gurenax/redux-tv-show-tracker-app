@@ -1,5 +1,5 @@
 import React from 'react'
-import { formatRating, colorizeRating } from '../helpers/rating'
+import { formatRating, colorizeRating } from '../../helpers/rating'
 
 const ShowDetailActive = ({
   activeShow,
@@ -19,12 +19,14 @@ const ShowDetailActive = ({
       </div>
     </div>
     <div className="m-2" dangerouslySetInnerHTML={{__html: activeShow.show.summary}}></div>
-    <div className="m-2">
-      <h5 className="episodeHeader">Episodes</h5>
-      <ul className="episodeList d-flex flex-wrap">
-        {episodeList}
-      </ul>
-    </div>
+    {episodeList.length>0 &&
+      <div className="m-2">
+        <h5 className="episodeHeader">Episodes</h5>
+        <ul className="episodeList d-flex flex-wrap">
+          {episodeList}
+        </ul>
+      </div>
+    }
   </div>
 )
 

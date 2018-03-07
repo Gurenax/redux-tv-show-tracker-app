@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import EpisodeDetailActive from '../components/EpisodeDetailActive'
+import EpisodeDetailActive from '../components/EpisodeDetail/EpisodeDetailActive'
 
 class EpisodeDetail extends Component {
   render() {

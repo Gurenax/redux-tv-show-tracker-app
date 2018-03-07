@@ -23,8 +23,10 @@ const loadEpisodeListSuccess = (show, episodes) => {
 */
 export const loadEpisodeList = show => {
   return dispatch => {
-    return fetchEpisodeList().then(response => {
+    return fetchEpisodeList(show.id).then(response => {
       dispatch(loadEpisodeListSuccess(show, response))
+    }).catch(error => {
+      dispatch(loadEpisodeListSuccess(show, []))
     })
   }
 }

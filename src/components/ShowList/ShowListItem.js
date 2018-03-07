@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { formatRating, colorizeRating } from '../helpers/rating'
+import { formatRating, colorizeRating } from '../../helpers/rating'
 
 const ShowListItem = ({
   show,

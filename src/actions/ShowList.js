@@ -18,6 +18,8 @@ export const loadShowList = () => {
   return dispatch => {
     return fetchShowList().then(response => {
       dispatch(loadShowListSuccess(response))
+    }).catch(error => {
+      dispatch(loadShowListSuccess([]))
     })
   }
 }

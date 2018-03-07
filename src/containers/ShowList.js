@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { loadShowList } from '../actions/ShowList'
 import { selectShow } from '../actions/ShowDetail'
-import ShowListItem from '../components/ShowListItem'
+import ShowListItem from '../components/ShowList/ShowListItem'
 
 class ShowList extends Component {
   renderList() {
@@ -11,6 +11,10 @@ class ShowList extends Component {
 
     if(!showList.shows) {
       return <div>Loading...</div>
+    }
+
+    if(showList.shows.length===0) {
+      return <div>No shows available at this time</div>
     }
 
     return showList.shows.map(showItem => {
@@ -45,7 +49,6 @@ const mapDispatchToProps = dispatch => {
     {
       loadShowList: loadShowList,
       selectShow: selectShow
-      // loadEpisodeList: loadEpisodeList
     },
     dispatch
   )

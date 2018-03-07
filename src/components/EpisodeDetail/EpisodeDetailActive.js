@@ -1,5 +1,5 @@
 import React from 'react'
-import { colorizeAirdate, formatAirdate } from '../helpers/airdate'
+import { colorizeAirdate, formatAirdate } from '../../helpers/airdate'
 
 const EpisodeDetailActive = ({
   episode

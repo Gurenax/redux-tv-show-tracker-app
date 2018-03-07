@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { selectEpisode } from '../actions/EpisodeDetail'
 import { loadEpisodeList } from '../actions/ShowDetail'
-import EpisodeListItem from '../components/EpisodeListItem'
-import ShowDetailActive from '../components/ShowDetailActive'
+import EpisodeListItem from '../components/ShowDetail/EpisodeListItem'
+import ShowDetailActive from '../components/ShowDetail/ShowDetailActive'
 
 class ShowDetail extends Component {
   renderEpisodeList(episodes) {
@@ -16,7 +16,7 @@ class ShowDetail extends Component {
   }
 
   componentDidMount() {
-    if(!this.props.activeShow.episodes) {
+    if(!this.props.activeShow.episodes && !!this.props.activeShow.show) {
       this.props.loadEpisodeList(this.props.activeShow.show)
     }
   }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { colorizeAirdate, formatAirdate } from '../helpers/airdate'
+import { colorizeAirdate, formatAirdate } from '../../helpers/airdate'
 
 const EpisodeListitem = ({
   episode,
