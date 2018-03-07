@@ -22,4 +22,8 @@ SearchBar.propTypes = {
   onSubmitSearch: PropTypes.func.isRequired,
 }
 
+SearchBar.defaultProps = {
+  keyword: ''
+}
+
 export default SearchBar

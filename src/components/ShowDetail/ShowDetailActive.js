@@ -40,4 +40,8 @@ ShowDetailActive.propTypes = {
   episodeList: PropTypes.array.isRequired
 }
 
+ShowDetailActive.defaultProps = {
+  episodeList: []
+}
+
 export default ShowDetailActive
