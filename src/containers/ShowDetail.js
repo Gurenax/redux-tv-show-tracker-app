@@ -4,32 +4,15 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { selectEpisode } from '../actions/EpisodeDetail'
 import { loadEpisodeList } from '../actions/ShowDetail'
-import { formatRating, colorizeRating } from '../helpers/rating'
-import { colorizeAirdate, formatAirdate } from '../helpers/airdate'
+import EpisodeListItem from '../components/EpisodeListItem'
+import ShowDetailActive from '../components/ShowDetailActive'
 
 class ShowDetail extends Component {
   renderEpisodeList(episodes) {
     const { selectEpisode } = this.props
-
-    return episodes.map(episode => {
-      return (
-        <li key={episode.id} onClick={() => selectEpisode(episode)} className="mb-2 mr-2">
-          <Link to='/episode'>
-            <div className="episodeListItem d-flex">
-            <div className="episodeListImage"
-                style={{backgroundImage: "url("+(!!episode.image && episode.image.medium)+")"}}></div>
-            <div className="ml-2">
-              <div className="episodeNo">Season {episode.season} Episode {episode.number}</div>
-              <h5 className="episodeHeader">{episode.name}</h5>
-              <div className={colorizeAirdate(episode.airdate)}>
-                {formatAirdate(episode.airdate)}
-              </div>
-            </div>
-            </div>
-          </Link>
-        </li>
-      )
-    })
+    return episodes.map(episode => (
+      <EpisodeListItem key={episode.id} episode={episode} selectEpisode={selectEpisode} /> 
+    ))
   }
 
   componentDidMount() {
@@ -43,7 +26,6 @@ class ShowDetail extends Component {
     if(!activeShow || !activeShow.show){
       return <Redirect to="/" />
     }
-
     return (
       <div>
         <div>
@@ -51,25 +33,10 @@ class ShowDetail extends Component {
             Back to List
           </Link>
         </div>
-        <div className="d-flex m-2">
-          <img src={activeShow.show.image.medium} alt="" width="100"/>
-          <div className="ml-2">
-            <h3>{activeShow.show.name}</h3>
-            <div className="showGenre">{activeShow.show.genres.join(', ')}</div>
-            
-            <div className="showNetwork">{activeShow.show.network.name}</div>
-            <div className={colorizeRating(activeShow.show.rating.average)}>
-              {formatRating(activeShow.show.rating.average)}
-            </div>
-          </div>
-        </div>
-        <div className="m-2" dangerouslySetInnerHTML={{__html: activeShow.show.summary}}></div>
-        <div className="m-2">
-          <h5 className="episodeHeader">Episodes</h5>
-          <ul className="episodeList d-flex flex-wrap">
-            {!!activeShow.episodes && this.renderEpisodeList(activeShow.episodes)}
-          </ul>
-        </div>
+        <ShowDetailActive
+          activeShow={activeShow}
+          episodeList={!!activeShow.episodes && this.renderEpisodeList(activeShow.episodes)}
+        />
       </div>
     )
   }

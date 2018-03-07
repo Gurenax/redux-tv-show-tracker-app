@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { loadShowList } from '../actions/ShowList'
 import { selectShow } from '../actions/ShowDetail'
-import { formatRating, colorizeRating } from '../helpers/rating'
+import ShowListItem from '../components/ShowListItem'
 
 class ShowList extends Component {
   renderList() {
@@ -16,24 +15,11 @@ class ShowList extends Component {
 
     return showList.shows.map(showItem => {
       const show = showItem.show
-      // const episodes = loadEpisodeList(show)
-      
-      return <li key={show.id} onClick={() => selectShow(show)}>
-        <Link to='/show' className="showListItem d-flex m-1">
-          <div className="showListImage"
-                style={{backgroundImage: "url("+show.image.medium+")"}}></div>
-          <div className="ml-2">
-            <h4 className="showTitle">{show.name}</h4>
-            <div className="showGenre">{show.genres.join(', ')}</div>
-            <div className="showBlock d-flex justify-content-between pr-2">
-              <div className="showNetwork mr-auto">{show.network.name}</div>
-              <div className={colorizeRating(show.rating.average)+' mr-2'}>
-                {formatRating(show.rating.average)}
-              </div>
-            </div>
-          </div>
-        </Link>
-      </li>
+      return <ShowListItem
+                key={show.id}
+                show={show}
+                selectShow={selectShow}
+              />
     })
   }
 
