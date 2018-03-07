@@ -11,6 +11,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;
+  background: #4F4F4F;
   min-height: 100px;
   min-width: 100px;
   max-height: 100px;
@@ -25,7 +26,8 @@
   color: #828282;
 }
 .showBlock {
-  min-width: 200px;
+  min-width: 190px;
+  max-width: 190px;
 }
 .showRatingGood, .episodeAired {
   color: #27AE60;

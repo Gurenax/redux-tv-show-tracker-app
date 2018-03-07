@@ -13,7 +13,7 @@ const EpisodeListitem = ({
             style={{backgroundImage: "url("+(!!episode.image && episode.image.medium)+")"}}></div>
         <div className="ml-2">
           <div className="episodeNo">Season {episode.season} Episode {episode.number}</div>
-          <h5 className="episodeHeader">{episode.name}</h5>
+          <h5 className="episodeName">{episode.name}</h5>
           <div className={colorizeAirdate(episode.airdate)}>
             {formatAirdate(episode.airdate)}
           </div>
