@@ -12,7 +12,7 @@ class EpisodeDetail extends Component {
     }
     return (
       <div>
-        <div>
+        <div className="navbar headerBar p-2 mb-2">
           <Link to="/show">
             Back to Show
           </Link>
