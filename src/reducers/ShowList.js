@@ -2,7 +2,8 @@ import { SHOWS_LOADED } from '../constants/actionTypes'
 
 const initialState = {
   shows: null,
-  searchKeyword: ''
+  searchKeyword: '',
+  typing: false
 }
 
 export default (state = initialState, action) => {
