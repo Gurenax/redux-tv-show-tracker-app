@@ -26,6 +26,9 @@ class ShowDetail extends Component {
     if(!activeShow || !activeShow.show){
       return <Redirect to="/" />
     }
+    // If episodes list is empty, serve empty array instead
+    const episodeList = !!activeShow.episodes ? this.renderEpisodeList(activeShow.episodes) : []
+
     return (
       <div>
         <div className="navbar headerBar p-2 mb-2">
@@ -35,7 +38,7 @@ class ShowDetail extends Component {
         </div>
         <ShowDetailActive
           activeShow={activeShow}
-          episodeList={!!activeShow.episodes && this.renderEpisodeList(activeShow.episodes)}
+          episodeList={episodeList}
         />
       </div>
     )
