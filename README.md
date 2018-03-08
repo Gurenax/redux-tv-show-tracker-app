@@ -35,3 +35,13 @@ Most TV Show Tracker Apps are subscription-based which cost money. I want to bui
   * The episode list loads when it is given a valid `Show ID`.
 * Episode Detail
   * The data loads with the selected `episode data`.
+
+## User Interface - Beta
+### Show List / Search Bar
+![](/docs/images/ShowList.png)
+
+### Show Detail / Episode List
+![](/docs/images/ShowDetail.png)
+
+### Episode Detail
+![](/docs/images/EpisodeDetail.png)
