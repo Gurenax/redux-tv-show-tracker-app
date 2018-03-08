@@ -24,7 +24,8 @@ const loadEpisodeListSuccess = (show, episodes) => {
 export const loadEpisodeList = show => {
   return dispatch => {
     return fetchEpisodeList(show.id).then(response => {
-      dispatch(loadEpisodeListSuccess(show, response.data))
+      const episodeListInReversedOrder = response.data.reverse()
+      dispatch(loadEpisodeListSuccess(show, episodeListInReversedOrder))
     }).catch(error => {
       dispatch(loadEpisodeListSuccess(show, []))
     })
