@@ -23,7 +23,8 @@ import ShowListItem from '../components/ShowList/ShowListItem'
 /* Mock Data */
 import {
   showListItem,
-  showListItemWithoutImage
+  showListItemWithoutImage,
+  showListItemWithoutRating
 } from '../__mockdata__/ShowList'
 
 storiesOf('Welcome', module).add('to Storybook', () => (
@@ -71,4 +72,10 @@ storiesOf('Show List Item', module)
       show={showListItemWithoutImage}
       selectShow={action('show selected')}
     />)
+  .add('without show rating', () =>
+      <ShowListItem
+      show={showListItemWithoutRating}
+      selectShow={action('show selected')}
+    />)
+  
 
