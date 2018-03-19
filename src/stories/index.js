@@ -21,7 +21,10 @@ import SearchCaption from '../components/ShowList/SearchCaption'
 import ShowListItem from '../components/ShowList/ShowListItem'
 
 /* Mock Data */
-import { showListItem } from '../__mockdata__/ShowList'
+import {
+  showListItem,
+  showListItemWithoutImage
+} from '../__mockdata__/ShowList'
 
 storiesOf('Welcome', module).add('to Storybook', () => (
   <Welcome showApp={linkTo('Button')} />
@@ -63,3 +66,9 @@ storiesOf('Show List Item', module)
       show={showListItem}
       selectShow={action('show selected')}
     />)
+  .add('without show image', () =>
+    <ShowListItem
+      show={showListItemWithoutImage}
+      selectShow={action('show selected')}
+    />)
+
