@@ -8,6 +8,7 @@ import { Button, Welcome } from '@storybook/react/demo'
 
 /* Components */
 import SearchBar from '../components/ShowList/SearchBar'
+import SearchCaption from '../components/ShowList/SearchCaption'
 
 storiesOf('Welcome', module).add('to Storybook', () => (
   <Welcome showApp={linkTo('Button')} />
@@ -34,3 +35,8 @@ storiesOf('Search Bar', module)
       onSubmitSearch={action('search submitted')}
     />
   ))
+
+storiesOf('Search Caption', module)
+  .add('default', () => <SearchCaption message='Hello World!'/>)
+  .add('without message value', () => <SearchCaption />)
+
