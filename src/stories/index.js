@@ -6,9 +6,22 @@ import { linkTo } from '@storybook/addon-links'
 
 import { Button, Welcome } from '@storybook/react/demo'
 
+import {
+  BrowserRouter as Router
+} from 'react-router-dom'
+
+/* Styles */
+import '../styles/dist/index.css'
+import '../include/bootstrap'
+import '../styles/dist/App.css'
+
 /* Components */
 import SearchBar from '../components/ShowList/SearchBar'
 import SearchCaption from '../components/ShowList/SearchCaption'
+import ShowListItem from '../components/ShowList/ShowListItem'
+
+/* Mock Data */
+import { showListItem } from '../__mockdata__/ShowList'
 
 storiesOf('Welcome', module).add('to Storybook', () => (
   <Welcome showApp={linkTo('Button')} />
@@ -40,3 +53,13 @@ storiesOf('Search Caption', module)
   .add('default', () => <SearchCaption message='Hello World!'/>)
   .add('without message value', () => <SearchCaption />)
 
+
+storiesOf('Show List Item', module)
+  .addDecorator(story => (
+    <Router>{story()}</Router>
+  ))
+  .add('default', () =>
+    <ShowListItem
+      show={showListItem}
+      selectShow={action('show selected')}
+    />)
